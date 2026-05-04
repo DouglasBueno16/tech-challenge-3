@@ -1,5 +1,5 @@
 # Build image
-FROM python:3.9-slim AS builder
+FROM python:3.12-slim AS builder
 
 WORKDIR /app
 
@@ -17,9 +17,15 @@ RUN if [ -f requirements.txt ]; then \
         pip install --no-cache-dir -r requirements.txt; \
         fi
 
-# Final image
-FROM python:3.9-slim
-COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+# === Final image ===
+FROM python:3.12-slim
+
+# Install system dependencies for PostgreSQL - psycopg2 requires libpq
+RUN apt-get update && apt-get install -y \
+        libpq5 \
+        && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 WORKDIR /app
 COPY . .
 
