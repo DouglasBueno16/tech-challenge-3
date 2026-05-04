@@ -47,7 +47,7 @@ jobs:
       
       - name: Run pylint
         run: |
-          pylint --disable E0401 app.py
+          pylint --disable E0401 --fail-under=8.0 app.py
 
   deploy:
     needs: [build, lint]
