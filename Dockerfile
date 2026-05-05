@@ -18,7 +18,7 @@ RUN if [ -f requirements.txt ]; then \
         fi
 
 # === Final image ===
-FROM python:3.12-alpine
+FROM python:3.12-slim
 
 # Install system dependencies for PostgreSQL - psycopg2 requires libpq
 RUN apt-get update && apt-get install -y \
