@@ -1,3 +1,5 @@
+# Main CI/CD pipeline workflow for Tech Challenge 3
+
 name: Pipeline-CI-CD-Tech3
 
 on:
@@ -49,7 +51,9 @@ jobs:
         run: |
           pylint --disable E0401 --fail-under=8.0 app.py
 
-  deploy:
+  check-security:
+
+  publish-image:
     needs: [build, lint]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'

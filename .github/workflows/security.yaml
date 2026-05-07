@@ -1,0 +1,18 @@
+# Workflow for security checks
+
+name: Security-Checks
+on:
+  workflow_dispatch:
+    branches: [ "main" ]
+
+  jobs:
+    check-security:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.12'
