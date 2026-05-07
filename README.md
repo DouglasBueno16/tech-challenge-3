@@ -15,9 +15,9 @@ Arquivos adicionados neste tech-challenge-3:
 
 ## Desenvolvimento
 
--[] Criar o workflow de CI/CD no GitHub Actions
+-[X] Criar o workflow de CI/CD no GitHub Actions
 
--[] Configurar o workflow para rodar os testes e linting
+-[X] Configurar o workflow para rodar os testes e linting
 
 -[] Configurar scan de segurança para a aplicação
 
