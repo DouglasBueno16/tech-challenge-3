@@ -52,9 +52,10 @@ jobs:
           pylint --disable E0401 --fail-under=8.0 app.py
 
   check-security:
+    uses: ./.github/workflows/security.yaml
 
   publish-image:
-    needs: [build, lint]
+    needs: [build, lint, check-security]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
